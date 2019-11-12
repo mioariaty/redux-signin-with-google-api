@@ -12,11 +12,11 @@ class StreamList extends React.Component {
     renderAdmin = (stream) => {
         if (stream.userId === this.props.currentUserId) {
             return (
-                <div>
-                    <button className="btn btn-danger rounded-0">Delete</button>
+                <div className="d-flex">
+                    <button className="btn btn-danger btn-sm m-0 rounded-0">Delete</button>
                     <Link
                         to={`/streams/edit/${stream.id}`}
-                        className="btn btn-info rounded-0">Edit</Link>
+                        className="btn btn-info btn-sm m-0 rounded-0">Edit</Link>
                 </div>
             )
         }
@@ -41,7 +41,7 @@ class StreamList extends React.Component {
         } else {
             return streams.map((stream, index) => {
                 return (
-                    <div 
+                    <div
                         className="card mt-2"
                         index={index} 
                         key={stream.id}>

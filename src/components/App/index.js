@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import { Router, Route } from 'react-router-dom'
 import StreamEdit from '../Streams/StreamEdit'; 
 import StreamCreate from '../Streams/StreamCreate'; 
@@ -11,11 +11,10 @@ import './app.css';
 
 const App = () => {
     return(
-        <div className="container-fluid">
-            
+        <Fragment>
             <Router history={history}>
-                <div>
-                    <Header/>
+                <Header/>
+                <div className="container">
                     <Route path="/" exact component={StreamList} />
                     <Route path="/streams/new" exact component={StreamCreate} />
                     <Route path="/streams/edit/:id" exact component={StreamEdit} />
@@ -23,7 +22,7 @@ const App = () => {
                     <Route path="/streams/show" exact component={StreamShow} />
                 </div>
             </Router>
-        </div>
+        </Fragment>
     )
 }
 export default App;

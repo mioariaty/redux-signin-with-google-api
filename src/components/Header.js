@@ -4,28 +4,25 @@ import GoogleAuth from './Google.auth';
 
 const Header = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light">
+        <nav className="mb-1 navbar navbar-expand-lg">
             <button
-                className="navbar-toggler" 
-                type="button" 
-                data-toggle="collapse" 
-                data-target="#navbarNav" 
-                aria-controls="navbarNav" 
-                aria-expanded="false" 
-                aria-label="Toggle navigation"> <span className="navbar-toggler-icon" />
+                className="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent-555"
+                aria-controls="navbarSupportedContent-555"
+                aria-expanded="false"
+                aria-label="Toggle navigation" >
+                <span className="navbar-toggler-icon" />
             </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
-                    {/* <li className="nav-item">
-                        <Link to="/" className="btn nav-link">Streamy</Link>
-                    </li> */}
+            <div className="collapse navbar-collapse" id="navbarSupportedContent-555">
+                <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
-                        <Link to="/" className="btn nav-link">All Streams</Link>
+                        <Link to="/" className="nav-link">All Streams</Link>
                     </li>
                 </ul>
-                <ul className="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-                    <GoogleAuth/>
-                </ul>
+               
+                <GoogleAuth/>
             </div>
         </nav>
     );
