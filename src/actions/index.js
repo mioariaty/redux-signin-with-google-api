@@ -53,7 +53,7 @@ export const fetchSingleStream = (id) => async dispatch => {
 
 // case 6 : edit a stream | *id,formValues: lấy id và body info của stream muốn edit
 export const editStream  = (id, formValues) => async dispatch => {
-    const response = await streamsAPI.patch(`/streams/${id}`, formValues);
+    const response = await streamsAPI.put(`/streams/${id}`, formValues);
 
     dispatch({
         type: types.EDIT_STREAM,

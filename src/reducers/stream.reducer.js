@@ -1,7 +1,6 @@
 import * as types from "../constants/actionsType";
 import _ from 'lodash';
 
-// fetch a record
 export default (state = {}, action) => {
     switch (action.type) {
         // fetch all records
@@ -14,14 +13,17 @@ export default (state = {}, action) => {
         case types.CREATE_STREAM:
             return {...state, [action.payload.id]: action.payload}; 
         case types.EDIT_STREAM:
-            const newState = {...state};
-            newState[action.payload.id] = action.payload;
-            return newState;
+            return {...state, [action.payload.id]: action.payload}; 
             
         // delete propterties
         case types.DELETE_STREAM:
-            return _.omit(state, action.payload.id);
+            const deleteState = {...state};
+            deleteState[action.payload.id] = action.payload;
+            return delete deleteState.id;
 
+            /* cach 2
+                return _.omit(state, action.payload.id);
+            */
         default:
             return state;
     }
