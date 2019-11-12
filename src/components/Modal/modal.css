@@ -1,0 +1,8 @@
+.ui.modal {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 630px;
+    height: auto;
+    padding: 0.5rem 1rem;
+}

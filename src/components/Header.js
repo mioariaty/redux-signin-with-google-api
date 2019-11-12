@@ -4,7 +4,7 @@ import GoogleAuth from './Google.auth';
 
 const Header = () => {
     return (
-        <nav className="mb-1 navbar navbar-expand-lg">
+        <nav className="mb-1 navbar navbar-expand-lg mb-4">
             <button
                 className="navbar-toggler"
                 type="button"

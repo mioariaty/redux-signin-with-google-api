@@ -4,3 +4,7 @@
 .card-body {
     padding: 0.25rem 1rem !important;
 }
+.nav-item p {
+    margin-bottom: 0px;
+    margin-right: 0.5rem;
+}

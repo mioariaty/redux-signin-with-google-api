@@ -5,18 +5,20 @@ import {Link} from 'react-router-dom';
 
 class StreamList extends React.Component {
     
-    componentDidMount() {
-        this.props.fetchStreams();
-    }
+    // componentDidMount() {
+    //     this.props.fetchStreams();
+    // }
 
     renderAdmin = (stream) => {
-        if (stream.userId === this.props.currentUserId) {
+        if (stream.userId === this.props.currentUserId && this.props.isSignedIn) {
             return (
                 <div className="d-flex">
-                    <button className="btn btn-danger btn-sm m-0 rounded-0">Delete</button>
                     <Link
                         to={`/streams/edit/${stream.id}`}
-                        className="btn btn-info btn-sm m-0 rounded-0">Edit</Link>
+                        className="btn btn-info m-0 rounded-0">Edit</Link>
+                    <Link 
+                        to={`/streams/delete/${stream.id}`}
+                        className="btn btn-danger m-0 rounded-0">Delete</Link>
                 </div>
             )
         }
@@ -25,11 +27,11 @@ class StreamList extends React.Component {
     renderCreate = () => {
         if (this.props.isSignedIn) {
             return (
-                <div>
+                <React.Fragment>
                     <Link 
                         to="/streams/new" 
                         className="btn btn-success">Create stream</Link>
-                </div>
+                </React.Fragment>
             )
         }
     }
