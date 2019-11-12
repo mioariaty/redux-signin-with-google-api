@@ -1,0 +1,34 @@
+import { EDIT_STREAM } from "../constants/actionsType";
+
+// Array-based approach
+const streamReducer = (state = [], action) => {
+    switch (action.type) {
+        case EDIT_STREAM:
+            return state.map(stream => {
+                if (stream.id === action.payload.id) {
+                    return action.payload
+                } else {
+                    return stream
+                }
+            });
+    
+        default:
+            return state;
+    }
+}
+
+// object-based approach
+const streamReducer2 =  (state = {}, action) => {
+    switch (action.type) {
+        case EDIT_STREAM:
+            // cach viet 1
+            // const newState = {...state};
+            // newState[action.payload.id] = action.payload;
+            // return newState;
+
+            // cach viet 2 || *[action.payload.id] not an array
+            return { ...state, [action.payload.id]: action.payload };
+        default:
+            return state;
+    }
+}

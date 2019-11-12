@@ -1,0 +1,6 @@
+.text-red {
+    color: rgb(221, 4, 4);
+}
+.card-body {
+    padding: 0.25rem 1rem !important;
+}
