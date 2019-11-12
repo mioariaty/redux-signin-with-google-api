@@ -21,15 +21,17 @@ class StreamEdit extends React.Component {
             return <div>Loading...</div>
         } else {
             return (
-                <div>
-                    <h3>Edit stream</h3>
-                    {/* 
-                        - this.props.stream is an object with a title and a description property 
-                        - _.pick(Object, [path]) return new object composed of the picked object properties.
-                    */}
-                    <StreamForm
-                        initialValues={_.pick(this.props.stream, 'title', 'description')} 
-                        onSubmit={this.onSubmitEdit} />
+                <div className="row">
+                    <div className="col-md-6 offset-md-3">
+                        <h3 className="alert alert-primary">Edit stream</h3>
+                        {/* 
+                            - this.props.stream is an object with a title and a description property 
+                            - _.pick(Object, [path]) return new object composed of the picked object properties.
+                        */}
+                        <StreamForm
+                            initialValues={_.pick(this.props.stream, 'title', 'description')} 
+                            onSubmit={this.onSubmitEdit} />
+                    </div>
                 </div>
             )
         }

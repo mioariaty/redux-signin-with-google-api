@@ -11,7 +11,7 @@ class GoogleAuth extends React.Component {
         if (isSignedIn) {
             // record user's id
             this.props.signIn(this.auth.currentUser.get().getId());
-            console.log(this.auth.currentUser.get().getBasicProfile());
+            // console.log(this.auth.currentUser.get().getBasicProfile());
             
         } else {
             this.props.signOut();
@@ -52,17 +52,22 @@ class GoogleAuth extends React.Component {
             return (
                 <ul className="navbar-nav ml-auto nav-flex-icons align-items-center">
                     <li className="nav-item">
+                        <p>Chào mừng: <strong>{this.auth.currentUser.get().getBasicProfile().ig}</strong></p>
+                    </li>
+                    <li className="nav-item">
+                        <img 
+                            src={this.auth.currentUser.get().getBasicProfile().Paa} 
+                            className="rounded-circle z-depth-0" 
+                            height={55} 
+                            alt={this.auth.currentUser.get().getBasicProfile().ig} />
+                    </li>
+                    <li className="nav-item">
                         <button
                             type="button" 
                             className="btn btn-danger btn-sm"
                             onClick={this.onSignOutClick}> Sign Out
                         </button>
                     </li>
-                    <img 
-                        src={this.auth.currentUser.get().getBasicProfile().Paa} 
-                        className="rounded-circle z-depth-0" 
-                        height={55} 
-                        alt={this.auth.currentUser.get().getBasicProfile().ig} />
                 </ul>
             );
         } 

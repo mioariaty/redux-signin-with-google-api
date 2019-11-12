@@ -53,7 +53,7 @@ export const fetchSingleStream = (id) => async dispatch => {
 
 // case 6 : edit a stream | *id,formValues: lấy id và body info của stream muốn edit
 export const editStream  = (id, formValues) => async dispatch => {
-    const response = await streamsAPI.put(`/streams/${id}`, formValues);
+    const response = await streamsAPI.patch(`/streams/${id}`, formValues);
 
     dispatch({
         type: types.EDIT_STREAM,
@@ -70,4 +70,5 @@ export const deleteStream = (id) => async dispatch => {
         type: types.DELETE_STREAM,
         payload: id // lấy id của stream ta muốn xóa
     })
+    history.push('/');
 }

@@ -29,7 +29,7 @@ class StreamForm extends React.Component {
         return (
 
             <form 
-                onSubmit={this.props.handleSubmit(this.onSubmit)} className="form-control">      
+                onSubmit={this.props.handleSubmit(this.onSubmit)}>      
                 <Field
                     type="text"
                     name="title"

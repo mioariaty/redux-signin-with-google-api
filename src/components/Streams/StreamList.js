@@ -10,13 +10,15 @@ class StreamList extends React.Component {
     }
 
     renderAdmin = (stream) => {
-        if (stream.userId === this.props.currentUserId) {
+        if (stream.userId === this.props.currentUserId && this.props.isSignedIn) {
             return (
                 <div className="d-flex">
-                    <button className="btn btn-danger btn-sm m-0 rounded-0">Delete</button>
                     <Link
                         to={`/streams/edit/${stream.id}`}
-                        className="btn btn-info btn-sm m-0 rounded-0">Edit</Link>
+                        className="btn btn-info m-0 rounded-0">Edit</Link>
+                    <Link 
+                        to={`/streams/delete/${stream.id}`}
+                        className="btn btn-danger m-0 rounded-0">Delete</Link>
                 </div>
             )
         }
@@ -25,11 +27,11 @@ class StreamList extends React.Component {
     renderCreate = () => {
         if (this.props.isSignedIn) {
             return (
-                <div>
+                <React.Fragment>
                     <Link 
                         to="/streams/new" 
                         className="btn btn-success">Create stream</Link>
-                </div>
+                </React.Fragment>
             )
         }
     }
@@ -42,16 +44,18 @@ class StreamList extends React.Component {
             return streams.map((stream, index) => {
                 return (
                     <div
-                        className="card mt-2"
+                        className="col-md-6"
                         index={index} 
                         key={stream.id}>
-                        <div className="card-body d-flex align-items-center flex-row-reverse ">
-                            {this.renderAdmin(stream)}
-                            <div className="content w-100">
-                                <h5 className="card-title mb-0">Title: {stream.title}</h5>
-                                <p className="card-text">{stream.description}</p>
+                        <div className="card mt-2">
+                            <div className="card-body d-flex align-items-center flex-row-reverse ">
+                                {this.renderAdmin(stream)}
+                                <div className="content w-100">
+                                    <h5 className="card-title mb-0">Title: {stream.title}</h5>
+                                    <p className="card-text">{stream.description}</p>
+                                </div>
                             </div>
-                        </div>
+                    </div>
                     </div>
                 );
             })
@@ -61,10 +65,10 @@ class StreamList extends React.Component {
     render() {
         return (
             <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-12">
                     {this.renderCreate()}
-                    {this.renderListStreams()}
                 </div>
+                {this.renderListStreams()}
             </div>
         );
     }
