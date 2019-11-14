@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import GoogleAuth from './Google.auth';
+import GoogleForm from './Google-docs-form';
 
 const Header = () => {
     return (
@@ -19,6 +20,11 @@ const Header = () => {
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
                         <Link to="/" className="nav-link">All Streams</Link>
+                    </li>
+                    <li className="nav-item">
+                        <div className="nav-link">
+                            <GoogleForm />
+                        </div>
                     </li>
                 </ul>
                
