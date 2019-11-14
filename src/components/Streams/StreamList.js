@@ -51,7 +51,7 @@ class StreamList extends React.Component {
                             <div className="card-body d-flex align-items-center flex-row-reverse ">
                                 {this.renderAdmin(stream)}
                                 <div className="content w-100">
-                                    <h5 className="card-title mb-0">Title: {stream.title}</h5>
+                                    <Link to={`streams/${stream.id}`} className="card-title mb-0">Title: {stream.title}</Link>
                                     <p className="card-text">{stream.description}</p>
                                 </div>
                             </div>
