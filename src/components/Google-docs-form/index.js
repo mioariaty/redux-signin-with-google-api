@@ -1,5 +1,7 @@
 import React from 'react';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter,MDBInput } from 'mdbreact';
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader,MDBInput } from 'mdbreact';
+import * as types from '../../constants/google-form.constant';
+import Axios from 'axios';
 
 class GoogleForm extends React.Component {
     constructor(props) {
@@ -7,6 +9,11 @@ class GoogleForm extends React.Component {
         
         this.state = {
             modal: false,
+            email: '',
+            name: '',
+            phone: '',
+            address: '',
+            message: ''
         }
     }
     
@@ -30,6 +37,23 @@ class GoogleForm extends React.Component {
     onSubmitHandle = (e) => {
         e.preventDefault();
 
+    }
+
+    sendMassage = () => {
+        const formData = new FormData();
+        formData.append(types.GOOGLE_FORM_EMAIL, this.state.email);
+        formData.append(types.GOOGLE_FORM_NAME, this.state.name);
+        formData.append(types.GOOGLE_FORM_PHONE, this.state.phone);
+        formData.append(types.GOOGLE_FORM_ADDRESS, this.state.address);
+        formData.append(types.GOOGLE_FORM_MESSAGE, this.state.message);
+
+        Axios
+            .post(types.CORS_PROXY + types.GOOGLE_FORM_ACTION_URL, formData)
+            .then(() => {
+                this.setState({
+                    
+                })
+            })
     }
     
     render() {
