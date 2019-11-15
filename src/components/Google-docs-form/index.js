@@ -14,7 +14,6 @@ class GoogleForm extends React.Component {
             phone: '',
             address: '',
             message: '',
-            sendingMessage: false
         }
     }
     
@@ -25,15 +24,10 @@ class GoogleForm extends React.Component {
         });
     }
 
-    onChangeHandle = (e) => {
-        this.setState({[e.target.name]: e.target.value})
-    }
+    onChangeHandle = (e) => this.setState({ [e.target.name]: e.target.value })
 
     onSubmitHandle = (e) => {
         e.preventDefault();
-        this.setState({
-            sendingMessage: true
-        })
         this.sendMassage();
     }
 
@@ -47,30 +41,20 @@ class GoogleForm extends React.Component {
 
         Axios
             .post(types.GOOGLE_FORM_ACTION_URL, formData)
-            .then(() => {
+            .then((res) => {
+                console.log(res);
                 this.setState({
                     email: '',
                     name: '',
                     phone: '',
                     address: '',
                     message: '',
-                    sendingMessage: false
                 })
             })
-            .catch((err) => {
-                console.log(err);
-                this.setState({
-                    sendingMessage: false
-                })
-            })
+            .catch((err) => console.log(err))
     }
     
     render() {
-        if(this.state.sendingMessage){
-            return(
-                <div>Sending...</div>
-            )
-        }
         return (
             <MDBContainer>
                 <span onClick={this.toggle} style={{cursor: 'pointer', color: '#007bff'}}>Gửi ý kiến cho chúng tui</span>
