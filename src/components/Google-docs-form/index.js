@@ -46,7 +46,7 @@ class GoogleForm extends React.Component {
         formData.append(types.GOOGLE_FORM_MESSAGE, this.state.message);
 
         Axios
-            .post(types.CORS_PROXY + types.GOOGLE_FORM_ACTION_URL, formData)
+            .post(types.GOOGLE_FORM_ACTION_URL, formData)
             .then(() => {
                 this.setState({
                     email: '',
