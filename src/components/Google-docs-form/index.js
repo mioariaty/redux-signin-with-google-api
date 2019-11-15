@@ -13,7 +13,8 @@ class GoogleForm extends React.Component {
             name: '',
             phone: '',
             address: '',
-            message: ''
+            message: '',
+            sendingMessage: false
         }
     }
     
@@ -25,21 +26,18 @@ class GoogleForm extends React.Component {
     }
 
     onChangeHandle = (e) => {
-        let target = e.target;
-        let name = target.name;
-        let value = target.type === 'checkbox' ? target.checked : target.value;
-
-        this.setState({
-            [name]: value  
-        })
+        this.setState({[e.target.name]: e.target.value})
     }
 
     onSubmitHandle = (e) => {
         e.preventDefault();
-
+        this.setState({
+            sendingMessage: true
+        })
+        this.sendMassage();
     }
 
-    sendMassage = () => {
+    sendMassage = () => {   
         const formData = new FormData();
         formData.append(types.GOOGLE_FORM_EMAIL, this.state.email);
         formData.append(types.GOOGLE_FORM_NAME, this.state.name);
@@ -51,12 +49,28 @@ class GoogleForm extends React.Component {
             .post(types.CORS_PROXY + types.GOOGLE_FORM_ACTION_URL, formData)
             .then(() => {
                 this.setState({
-                    
+                    email: '',
+                    name: '',
+                    phone: '',
+                    address: '',
+                    message: '',
+                    sendingMessage: false
+                })
+            })
+            .catch((err) => {
+                console.log(err);
+                this.setState({
+                    sendingMessage: false
                 })
             })
     }
     
     render() {
+        if(this.state.sendingMessage){
+            return(
+                <div>Sending...</div>
+            )
+        }
         return (
             <MDBContainer>
                 <span onClick={this.toggle} style={{cursor: 'pointer', color: '#007bff'}}>Gửi ý kiến cho chúng tui</span>
@@ -90,7 +104,7 @@ class GoogleForm extends React.Component {
                                 group
                                 type="number"
                                 validate
-                                name="phone-number"
+                                name="phone"
                                 error="wrong"
                                 success="right"
                                 onChange={this.onChangeHandle}

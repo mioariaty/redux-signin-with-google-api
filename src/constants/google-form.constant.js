@@ -6,4 +6,4 @@ export const GOOGLE_FORM_MESSAGE = 'entry.1298496535';
 
 export const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/u/1/d/e/1FAIpQLSf_ySZCI2ce25ojswpaeZ3F3zHiAmB4a3TKAuJ_jmFH6F3p9w/formResponse';
 
-export const CORS_PROXY = 'https://cors-escape.herokuapp.com/';
+export const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
